@@ -1,5 +1,11 @@
-from py.better_combos import CheckpointLoaderSimpleWithImages
+import os
+import sys
 
+THIS_DIR = os.path.dirname(__file__)
+if THIS_DIR not in sys.path:
+    sys.path.append(THIS_DIR)
+
+from better_combos import CheckpointLoaderSimpleWithImages
 
 class CheckpointLoaderSimpleWithImagesAndName(CheckpointLoaderSimpleWithImages):
     """拡張版: CheckpointLoaderSimpleWithImages + ckpt_name出力"""
