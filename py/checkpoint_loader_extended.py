@@ -19,6 +19,11 @@ class CheckpointLoaderSimpleWithImagesAndName(CheckpointLoaderSimpleWithImages):
 
     def load_checkpoint(self, **kwargs):
         ckpt_name = kwargs.get("ckpt_name", "")
+        # パス区切りを統一し、末尾の .safetensors を削除して返す
+        if isinstance(ckpt_name, str):
+            ckpt_name = ckpt_name.replace("\\", "/")
+            if ckpt_name.endswith(".safetensors"):
+                ckpt_name = ckpt_name[:-len(".safetensors")]
         result = super().load_checkpoint(**kwargs)
         return (*result, ckpt_name)
 
