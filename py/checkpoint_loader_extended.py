@@ -25,8 +25,12 @@ class CheckpointLoaderSimpleWithImagesAndName(CheckpointLoaderSimpleWithImages):
 
 NODE_CLASS_MAPPINGS = {
     "CheckpointLoader|pysssss|extended": CheckpointLoaderSimpleWithImagesAndName,
+    # 上書きして既存フロントエンド処理を利用できるようにする（後勝ちで上書きされる）
+    "CheckpointLoader|pysssss": CheckpointLoaderSimpleWithImagesAndName,
 }
 
 NODE_DISPLAY_NAME_MAPPINGS = {
     "CheckpointLoader|pysssss|extended": "Checkpoint Loader Extended 🐍",
+    # 元の表示名と同じにしてUIに違和感が出ないようにする
+    "CheckpointLoader|pysssss": "Checkpoint Loader 🐍",
 }
